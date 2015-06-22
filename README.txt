@@ -21,10 +21,9 @@ Usage:
     git clone https://github.com/mktx-code/pybtc-stress
     cd pybtc-stress
     ./stress.sh
+        -- What follows is the original pybitcoins README in it's entirety. --
 
-                 -- What follows is the original pybitcoins README in it's entirety. --
-
-                                               ---
+                                ---
 
 # Pybitcointools, Python library for Bitcoin signatures and transactions
 
