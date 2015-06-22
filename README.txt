@@ -21,7 +21,8 @@ Usage:
     git clone https://github.com/mktx-code/pybtc-stress
     cd pybtc-stress
     ./stress.sh
-        -- What follows is the original pybitcoins README in it's entirety. --
+    
+        -- The following is the original pybitcoins README in it's entirety. --
 
                                 ---
 
