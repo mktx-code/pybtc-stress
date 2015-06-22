@@ -1,3 +1,30 @@
+# pybtc-stress
+This a fork of pybitcointools https://github.com/vbuterin/pybitcointools. I've added the stress.sh script. It is a bash script that can be run from the command line on any Linux distro, including Tails.
+
+#### Automated:
+
+* Create a BIP32 HD seed
+* Create determinitic addreses
+* Create, sign, and broadcast transactions
+* Backup seed, addresses, and private keys
+* Give estimates on number of transactions and time remaining
+
+#### User defined:
+
+* Starting amount (by funding the first address)
+* Transaction fees
+* Seconds per transaction
+
+#### Usage:
+
+    git clone https://github.com/mktx-code/pybtc-stress
+    cd pybtc-stress
+    ./stress.sh
+
+##### What follows is the pybitcoins README in it's entirety.
+
+---
+
 # Pybitcointools, Python library for Bitcoin signatures and transactions
 
 ### Advantages:
