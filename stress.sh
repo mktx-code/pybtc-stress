@@ -22,8 +22,9 @@ sum=$($(echo -n "$pybtc") unspent "$addr" | ./pybtctool -j multiaccess value | .
 while [[ "$sum" -lt "1" ]]; do echo ""; echo "NO BITS IN THIS ADDRESS YET."; echo ""
 echo -e "YOU SHOULD FUND THIS ADDRESS NOW.\nAFTER IT IS FUNDED PRESS ENTER."; read
 sum=$($(echo -n "$pybtc") unspent "$addr" | ./pybtctool -j multiaccess value | ./pybtctool -j sum); done
-echo ""; read -p "Set fee in bits (10000 bits = .0001 BTC): " fee; pos=$(($sum / $fee))
-echo ""; echo "[+] FUNDED: "$addr""; echo "[+] AVAILABLE BITS: "$sum""; echo "[+] TRANSACTIONS POSSIBLE: "$pos""
+echo ""; echo "[+] FUNDED: "$addr""; echo ""; echo "[+] AVAILABLE BITS: "$sum""; echo ""
+read -p "Set fee in bits (10000 bits = .0001 BTC): " fee; pos=$(($sum / $fee))
+echo ""; echo "[+] FEE SET AT: "$fee" BITS"; echo ""; echo "[+] TRANSACTIONS POSSIBLE: "$pos""
 echo ""; read -p "Set number of seconds between transactions: " sec; while [[ -z "$sec" ]]; do echo ""
 echo "YOU MUST ENTER A VALID NUMBER!"; echo ""; read -p "Set number of seconds between transactions: " sec; done
 if [ "$sec" -gt "10" ]; then sec=$(($sec - 3)); fi
