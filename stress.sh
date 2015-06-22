@@ -1,14 +1,15 @@
 #!/bin/bash
 set -e
-echo ""; echo "[+] GENERATING NEW BIP32 SEED..."; echo ""
-# Create Seed #
+# Backup File #
 if [[ ! -e stest.bak ]]; then touch stest.bak; chown "$USER" stest.bak; chmod 0600 stest.bak; else
 echo ""; echo "STRESS TEST BACKUP FILE EXISTS!"; echo ""; read -p "Overwrite? (y/no) " ow
 if [ "$ow" = "no" ]; then echo ""; read -p "PRESS ENTER TO EXIT"; exit 0; fi; fi
+echo ""; echo "[+] GENERATING NEW BIP32 SEED..."; echo ""
+# Create Seed #
 s=$(./pybtctool random_electrum_seed | ./pybtctool -s slowsha | ./pybtctool -s changebase 16 256 | ./pybtctool -b changebase 256 16 | ./pybtctool -s bip32_master_key)
 echo ""; echo "[+] YOUR SEED IS: "$s""; echo ""; read -p "PRESS ENTER TO CONTINUE"
 echo -en "\nSEED: "$s"\n\n" > stest.bak
-# Create First Privkey/Address And Backup#
+# Create First Privkey/Address And Backup #
 priv=$(./pybtctool bip32_ckd "$s" 0 | ./pybtctool -s bip32_extract_key)
 addr=$(./pybtctool privtoaddr "$priv")
 echo -en "\nAddress 0: "$addr"\nPrivkey 0: "$priv"\n" >> stest.bak
