@@ -38,7 +38,7 @@ while [[ "$sum" -gt "$fee" ]]; do ntot=$(($totx - $sec)); echo ""; echo "[+] STR
 i=$(cat stest.bak | grep -c "Privkey"); npriv=$(./pybtctool bip32_ckd "$s" "$i" | ./pybtctool -s bip32_extract_key)
 naddr=$(./pybtctool privtoaddr "$npriv"); echo -en "\nAddress "$i": "$naddr"\nPrivkey "$i": "$npriv"\n" >> stest.bak
 amt=$(expr $sum - $fee); echo "[+] SENDING "$amt" BITS TO "$naddr...""
-stx=$($(echo -n "$pybtc") unspent "$addr" | ./pybtctool -j select "$sum" | ./pybtctool -j mktx "$naddr":"$amt" | ./pybtctool -s sign 0 "$priv"); $(echo -n "$pybtc") pushtx "$stx"; sleep "$sec"; priv="$npriv"; addr="$naddr"
+stx=$($(echo -n "$pybtc") unspent "$addr" | ./pybtctool -j select "$sum" | ./pybtctool -j mktx "$naddr":"$amt" | ./pybtctool -s sign 0 "$priv"); $(echo -n "$pybtc") pushtx $(echo -n "$stx"); sleep "$sec"; priv="$npriv"; addr="$naddr"
 sum=$($(echo -n "$pybtc") unspent "$addr" | ./pybtctool -j multiaccess value | ./pybtctool -j sum)
 pos=$(($sum / $fee)); totx=$(($pos * $sec)); done
 echo ""; echo "[+] OUT OF BITS!"; echo ""; read -p "PRESS ENTER TO QUIT"; exit 0
