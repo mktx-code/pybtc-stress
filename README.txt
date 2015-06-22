@@ -24,7 +24,7 @@ Usage:
 
 -- What follows is the original pybitcoins README in it's entirety. --
 
----
+                            ---
 
 # Pybitcointools, Python library for Bitcoin signatures and transactions
 
