@@ -14,7 +14,7 @@ User defined:
 
 * Starting amount (by funding the first address)
 * Transaction fees
-* Seconds per transaction
+* Seconds between transaction
 
 Usage:
 
@@ -22,9 +22,9 @@ Usage:
     cd pybtc-stress
     ./stress.sh
 
--- What follows is the original pybitcoins README in it's entirety. --
+                 -- What follows is the original pybitcoins README in it's entirety. --
 
-                            ---
+                                               ---
 
 # Pybitcointools, Python library for Bitcoin signatures and transactions
 
