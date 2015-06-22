@@ -18,10 +18,10 @@ if [[ "$tor" = "no" ]]; then pybtc="./pybtctool"; else
 pybtc="torify ./pybtctool"; fi
 echo ""; echo -en "[+] FIRST ADDRESS: "$addr"\n[+] FIRST PRIVKEY: "$priv""; echo ""
 # Initial Funding #
-echo -e "\nYOU SHOULD FUND THIS ADDRESS NOW.\nAFTER IT IS FUNDED PRESS ENTER."; read
+echo -e "\nYOU SHOULD FUND THIS ADDRESS NOW: "$addr"\nAFTER IT IS FUNDED PRESS ENTER."; read
 sum=$($(echo -n "$pybtc") unspent "$addr" | ./pybtctool -j multiaccess value | ./pybtctool -j sum)
 while [[ "$sum" -lt "1" ]]; do echo ""; echo "NO BITS IN THIS ADDRESS YET."; echo ""
-echo -e "YOU SHOULD FUND THIS ADDRESS NOW.\nAFTER IT IS FUNDED PRESS ENTER."; read
+echo -e "YOU SHOULD FUND THIS ADDRESS NOW: "$addr"\nAFTER IT IS FUNDED PRESS ENTER."; read
 sum=$($(echo -n "$pybtc") unspent "$addr" | ./pybtctool -j multiaccess value | ./pybtctool -j sum); done
 echo ""; echo "[+] FUNDED: "$addr""; echo ""; echo "[+] AVAILABLE BITS: "$sum""; echo ""
 read -p "Set fee in bits (10000 bits = .0001 BTC): " fee; pos=$(($sum / $fee))
