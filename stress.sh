@@ -26,7 +26,8 @@ echo ""; read -p "Set fee in bits (10000 = .0001 BTC): " fee; pos=$(($sum / $fee
 echo ""; echo "[+] FUNDED: "$addr""; echo "[+] AVAILABLE BITS: "$sum""; echo "[+] TRANSACTIONS POSSIBLE: "$pos""
 echo ""; read -p "Set number of seconds between transactions: " sec; while [[ -z "$sec" ]]; do echo ""
 echo "YOU MUST ENTER A VALID NUMBER!"; echo ""; read -p "Set number of seconds between transactions: " sec; done
-sec=$(($sec - 3)); totx=$(($pos * $sec)); echo ""; echo "[+] TOTAL TIME TO COMPLETE: "$totx" SECONDS"; echo ""
+if [ "$sec" -gt "10" ]; then sec=$(($sec - 3)); fi
+totx=$(($pos * $sec)); echo ""; echo "[+] TOTAL TIME TO COMPLETE: "$totx" SECONDS"; echo ""
 echo "ONCE YOU START THE SCRIPT IT WILL CONTINUALLY GENERATE NEW ADDRESSES USING THE SEED CREATED IN THE BEGINNING. SENDING ALL AVAILABLE BITS TO THE NEXT DETERMINISTIC ADDRESS SPENDING ONLY THE "$fee" BIT FEE THAT YOU SET ON EACH TRANSACTION."; echo ""
 echo "IN THE CASE THAT THERE IS A PROBLEM, YOUR SEED AND ALL ADDRESSES/PRIVATE KEYS WILL BE STORED IN "$PWD"/stest.bak."
 echo ""; read -p "PRESS ENTER TO BEGIN STRESSING THE NETWORK."
